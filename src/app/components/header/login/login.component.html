@@ -1,0 +1,63 @@
+<div class="modal-header">
+  <h5 class="modal-title" id="exampleModalLabel">
+    {{ "label.login" | translate }}
+  </h5>
+  <button
+    type="button"
+    class="close"
+    data-dismiss="modal"
+    aria-label="Close"
+    (click)="activeModal.close()"
+  >
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="row">
+    <div class="col-12">
+      <!-- Success -->
+      <div class="alert alert-primary" role="alert" *ngIf="showLoginSuccess">
+        <strong>{{ "label.login.success" | translate }}</strong>
+      </div>
+      <!-- Errro -->
+      <div class="alert alert-danger" role="alert" *ngIf="showLoginError">
+        <strong>{{ "label.login.error" | translate }}</strong>
+      </div>
+      <form [formGroup]="formLogin" (ngSubmit)="checkLogin()">
+        <div class="row form-group">
+          <div class="col-12">
+            <label for="user">{{ "label.user" | translate }}</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="user"
+              id="user"
+            />
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class="col-12">
+            <label for="pass">{{ "label.pass" | translate }}</label>
+            <input
+              type="password"
+              class="form-control"
+              formControlName="pass"
+              id="pass"
+            />
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class="col-12">
+            <button
+              type="submit"
+              class="btn btn-primary btn-block"
+              [disabled]="formLogin.invalid"
+            >
+              {{ "label.login" | translate }}
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
